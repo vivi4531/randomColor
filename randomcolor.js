@@ -8,20 +8,27 @@ console.log("Der er hul igennem 👏🏻");
 //sets the background to a random color
 function randomBackground(){
 
-    //Calls randomColor to get an rgb object
-    randomColor(); 
-
-    //Calls rgbToCSS with that object
-    rgbToCSS(); 
-
-    //Uses the return value as value for body.style.backgroundColor, thus setting the background color to a random value.
-    document.querySelector.body.style.backgroundColor
-
-    let randomcolor = (document.querySelector("body").style.backgroundColor = target.value);
+    document.querySelector(".color").addEventListener("click", randomBackground); 
+    const rgbObject = randomColor();
+    const randomcolor = rgbToCSS(rgbObject);
+    displayRandomColor(randomcolor); 
+    showRgbCode(rgbObject); 
+    console.log(randomcolor); 
 }
 
-const rgbObject = randomColor();
-console.log(rgbObject); 
+    // //Calls randomColor to get an rgb object
+    // randomColor(); 
+
+    // //Calls rgbToCSS with that object
+    // rgbToCSS(); 
+
+    // //Uses the return value as value for body.style.backgroundColor, thus setting the background color to a random value.
+    // document.querySelector.body.style.backgroundColor
+
+    // let randomcolor = (document.querySelector("body").style.backgroundColor = target.value);
+ 
+
+
 
 //returns a random rgb color object
 function randomColor(){
@@ -43,21 +50,28 @@ function randomColor(){
 
 
 //converts a rgb color object into a CSS color string
-function rgbToCSS( randomcolor ){
+function rgbToCSS( rgbObject ){
 
-    //receives rgb object 
+    // //receives rgb object 
 
-    //convert object to string (toString)
-    randomcolor.toString();
-    console.log(`${randomcolor}`);
+    // //convert object to string (toString)
+    // randomcolor.toString();
+    // console.log(`${randomcolor}`);
     
-    //return string
-    return randomcolor; 
+    // //return string
+    // return randomcolor; 
 
+
+    return `rgb(${rgbObject.r}, ${rgbObject.g}, ${rgbObject.b})`;
 }
 
 
 //displays color
-function displayRandomColor(){
+function displayRandomColor(randomcolor){
+    document.body.style.backgroundColor = randomcolor; 
+}
 
+//writes rgb code in input field
+function showRgbCode(rgbObject){
+    document.querySelector("#rgbcode").value = `rgb( ${rgbObject.r}, ${rgbObject.g}, ${rgbObject.b})`;
 }
